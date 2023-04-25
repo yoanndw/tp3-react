@@ -11,8 +11,19 @@ export function BeerList(props: Props) {
         "Mort subite"
     ]);
 
+    let [newBeerInput, setNewBeerInput] = useState("");
+
+    const addBeer = () => {
+        const name = newBeerInput;
+        const newBeers = [...beers, name];
+        setBeers(newBeers);
+    }
+
     return (
         <div>
+            <input value={newBeerInput} onChange={evt => setNewBeerInput(evt.target.value)}/>
+            <button onClick={addBeer}>Add beer</button>
+
             <ul>
                 {beers.map((b, index) =>
                     <Beer key={index} name={b} />
