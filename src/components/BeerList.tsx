@@ -1,10 +1,9 @@
 import { useState } from "react";
 
 import { Beer } from "./Beer";
+import { Link } from "react-router-dom";
 
-interface Props { }
-
-export function BeerList(props: Props) {
+export function BeerList() {
     let [beers, setBeers] = useState([
         { id: 0, name: "Corona" },
         { id: 1, name: "Coreff" },
@@ -39,6 +38,11 @@ export function BeerList(props: Props) {
 
     return (
         <div>
+            <h1>Beer list</h1>
+
+            <Link to="/about">About</Link>
+            <br />
+
             <input value={newBeerInput} onChange={evt => setNewBeerInput(evt.target.value)}/>
             <button onClick={addBeer}>Add beer</button>
 
