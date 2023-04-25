@@ -15,6 +15,10 @@ export function BeerList(props: Props) {
 
     let [newBeerInput, setNewBeerInput] = useState("");
 
+    const clearNewBeerInput = () => {
+        setNewBeerInput("");
+    };
+
     const addBeer = () => {
         const newBeer = {
             id: nextBeerId++,
@@ -23,6 +27,8 @@ export function BeerList(props: Props) {
 
         const newBeers = [...beers, newBeer];
         setBeers(newBeers);
+
+        clearNewBeerInput();
     };
 
     const removeBeer = (id: number) => {
