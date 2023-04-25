@@ -6,22 +6,27 @@ interface Props { }
 
 export function BeerList(props: Props) {
     let [beers, setBeers] = useState([
-        "Corona",
-        "Coreff",
-        "Mort subite"
+        { id: 0, name: "Corona" },
+        { id: 1, name: "Coreff" },
+        { id: 2, name: "Mort subite" }
     ]);
+
+    let nextBeerId = beers.length;
 
     let [newBeerInput, setNewBeerInput] = useState("");
 
     const addBeer = () => {
-        const name = newBeerInput;
-        const newBeers = [...beers, name];
+        const newBeer = {
+            id: nextBeerId++,
+            name: newBeerInput
+        };
+
+        const newBeers = [...beers, newBeer];
         setBeers(newBeers);
     };
 
-    const removeBeer = (i: number) => {
-        let newBeers = [...beers];
-        newBeers.splice(i);
+    const removeBeer = (id: number) => {
+        const newBeers = beers.filter(b => b.id != id);
 
         setBeers(newBeers);
     };
@@ -32,8 +37,8 @@ export function BeerList(props: Props) {
             <button onClick={addBeer}>Add beer</button>
 
             <ul>
-                {beers.map((b, index) =>
-                    <Beer key={index} name={b} onRemove={() => removeBeer(index)}/>
+                {beers.map(b =>
+                    <Beer key={b.id} name={b.name} onRemove={() => removeBeer(b.id)}/>
                 )}
             </ul>
         </div>
