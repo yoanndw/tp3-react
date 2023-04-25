@@ -1,9 +1,13 @@
 interface Props {
-    name: string
+    name: string,
+    onRemove: () => void
 }
 
 export function Beer(props: Props) {
     return (
-        <li>{props.name}</li>
+        <li>
+            {props.name}
+            <button onClick={props.onRemove}>Remove</button>
+        </li>
     );
 }

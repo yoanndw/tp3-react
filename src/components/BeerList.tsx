@@ -17,7 +17,14 @@ export function BeerList(props: Props) {
         const name = newBeerInput;
         const newBeers = [...beers, name];
         setBeers(newBeers);
-    }
+    };
+
+    const removeBeer = (i: number) => {
+        let newBeers = [...beers];
+        newBeers.splice(i);
+
+        setBeers(newBeers);
+    };
 
     return (
         <div>
@@ -26,7 +33,7 @@ export function BeerList(props: Props) {
 
             <ul>
                 {beers.map((b, index) =>
-                    <Beer key={index} name={b} />
+                    <Beer key={index} name={b} onRemove={() => removeBeer(index)}/>
                 )}
             </ul>
         </div>
