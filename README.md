@@ -11,6 +11,11 @@ Le routage est géré : la page `/about` donne des informations sur le projet.
 
 ## Exécution
 
+A la racine, installer avec : 
+```
+npm i
+```
+
 A la racine, lancer : 
 ```sh
 npm start
